@@ -255,15 +255,24 @@
             display: block;
             border-radius: 10px;
         } 
-        @media (max-width: 768px) {
-            .task-input {
-            flex-direction: column;
-             }
-            .task-input input[type="date"], .task-input input[type="time"] {
-             width: 100%;
-             margin-bottom: 10px;
-              }
-          }
+        @media (max-width: 412px) {
+  .task-input {
+    flex-direction: column;
+    align-items: center;
+  }
+  .task-input input[type="date"], .task-input input[type="time"] {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .task-input select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+  }
+}
         
         
     </style>
@@ -311,6 +320,17 @@
             <img src="https://img.freepik.com/free-vector/students-employees-adding-events-deadlines-calendar-app-young-people-using-time-organizer-planner-flat-illustration_74855-20735.jpg?semt=ais_hybrid">
         </div>
     </div>
+    <footer>
+  <p>&copy; 2023 My App</p>
+  <p><a href="#about-me" class="about-me-link">About Me</a></p>
+</footer>
+
+<div id="about-me" class="about-page" style="display: none;">
+  <h2>About Me</h2>
+  <p>Hello! I'm Sai Manisha, a 3rd year Computer Science student with a passion for developing innovative and user-friendly applications. 
+      I'm thrilled to introduce you to my latest project, 
+      a task management app designed to help you stay organized and focused.</p>
+  </div>
 
     <script>
         function startApp() {
@@ -386,6 +406,15 @@
             document.getElementById('task-date').value = '';
             document.getElementById('task-time').value = '';
         }
+        document.addEventListener('DOMContentLoaded', function () {
+  const aboutMeLink = document.querySelector('.about-me-link');
+  const aboutMeDiv = document.querySelector('#about-me');
+
+  aboutMeLink.addEventListener('click', function (event) {
+    event.preventDefault();
+    aboutMeDiv.style.display = 'block';
+  });
+});
         function formatTimeWithAMPM(time) {
     let [hours, minutes] = time.split(':');
     let period = 'AM';
