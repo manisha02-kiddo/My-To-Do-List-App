@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6A11CB, #2575FC);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .welcome-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out,pulse 2s infinite;
+            background-image: url('https://img.freepik.com/free-vector/abstract-background-with-geometric-shapes_23-2148552956.jpg?semt=ais_hybrid');
+            background-size: cover;
+            background-position: center;
+            background: linear-gradient(135deg, #6A11CB, #2575FC);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            
+        }
+        @keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+        .welcome-screen h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-screen p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .name-input {
+            margin-bottom: 20px;
+        }
+
+        .name-input input {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+            text-align: center;
+        }
+
+        .get-started-btn {
+            background: linear-gradient(45deg, #FF7E5F, #FEB47B);
+            border: none;
+            padding: 15px 30px;
+            color: white;
+            font-size: 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+        .get-started-btn i {
+            margin-right: 10px;
+        }    
+
+        .get-started-btn:hover {
+            transform: scale(1.1);
+            background-color: #FF7E5F;
+            color: white;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }     
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+}
+
+        .container {
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            color: #333;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            margin-top: 50px;
+        }
+
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #6A11CB;
+        }
+
+        .task-input {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .task-input input, .task-input select {
+            flex: 1;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            color:black;
+        }
+        .task-input input::-webkit-input-placeholder, .task-input select::-webkit-input-placeholder {
+           color: #ccc;
+        }
+
+        .task-input input:-moz-placeholder, .task-input select:-moz-placeholder {
+          color: #ccc;
+        }
+
+        .task-input input::-moz-placeholder, .task-input select::-moz-placeholder {
+         color: #ccc;
+        }
+
+        .task-input input:-ms-input-placeholder, .task-input select:-ms-input-placeholder {
+         color: #ccc;
+        }
+
+        .task-input button {
+            background-color: #6A11CB;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .task-input button:hover {
+            background-color: #2575FC;
+        }
+
+        .task-list {
+            list-style: none;
+            padding: 0;
+            background-image: url('https://img.freepik.com/free-vector/time-management-concept-woman-clock_23-2148827879.jpg?semt=ais_hybrid');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            background: linear-gradient(135deg, #855eae, #2575FC);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    
+            
+            
+        }
+
+        .task-item.completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .task-item button {
+            margin-left: 5px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .task-item button:hover {
+            color: #c8a6ec;
+        }
+
+        .priority {
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        #task-priority {
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            
+        }
+
+        .low { color: green; }
+        .medium { color: orange; }
+        .high { color: red; }
+
+        .how-it-works {
+            margin: 40px auto;
+            text-align: center;
+            color:darkblue;
+        }
+
+        .how-it-works h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .suggested-tasks {
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        .images-section img {
+            width: 100%;
+            max-width: 300px;
+            margin: 20px auto;
+            display: block;
+            border-radius: 10px;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="welcome-screen" id="welcome-screen">
+        <h1><i class="material-icons">check_circle</i>Manage Your Everyday Task List</h1>
+        <p><i class="material-icons">calendar_today</i>Organize your tasks, track progress, and achieve more!</p>
+        <div class="name-input">
+            <input type="text" id="user-name" placeholder="Enter your name">
+        </div>
+        <button class="get-started-btn" onclick="startApp()">
+            <i class="material-icons">play_arrow</i>Get Started</button>
+    </div>
+
+    <div class="container" id="app-container" style="display: none;">
+        <h2>To-Do List</h2>
+        <div class="task-input">
+            <input id="task-title" type="text" placeholder="Task title" required>
+            <select id="task-priority">
+                <option value="low">Low Priority</option>
+                <option value="medium">Medium Priority</option>
+                <option value="high">High Priority</option>
+                <input id="task-date" type="date" required>
+                <input id="task-time" type="time" required>
+            </select>
+            <button id="add-task-button" onclick="addTask()">
+                <span class="material-icons">add</span>
+            </button>
+             
+        </div>
+
+        <ul class="task-list" id="task-list"></ul>
+
+        <div class="how-it-works">
+            <h3>How it works</h3>
+            <div class="suggested-tasks">Suggested Task 1: Plan your day</div>
+            <div class="suggested-tasks">Suggested Task 2: Complete assignments</div>
+            <div class="suggested-tasks">Suggested Task 3: Exercise</div>
+        </div>
+        
+
+        <div class="images-section">
+            <img src="https://img.freepik.com/free-vector/woman-choosing-dates-calendar-appointment-booking_23-2148552956.jpg?semt=ais_hybrid" alt="Task management">
+            <img src="https://img.freepik.com/free-vector/students-employees-adding-events-deadlines-calendar-app-young-people-using-time-organizer-planner-flat-illustration_74855-20735.jpg?semt=ais_hybrid">
+        </div>
+    </div>
+
+    <script>
+        function startApp() {
+            const userName = document.getElementById('user-name').value.trim();
+            if (!userName) {
+                alert('Please enter your name to proceed.');
+                return;
+            }
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('app-container').style.display = 'block';
+            document.querySelector('#app-container h2').textContent = `Welcome, ${userName}! Here's your To-Do List🌟`;
+        }
+
+        const taskList = document.getElementById('task-list');
+
+        function addTask() {
+            const taskTitle = document.getElementById('task-title').value.trim();
+            const taskPriority = document.getElementById('task-priority').value;
+            const taskDate = document.getElementById('task-date').value;
+            const taskTime = document.getElementById('task-time').value;
+            
+
+
+            if (taskTitle === '') {
+                alert('Task title cannot be empty!');
+                return;
+            }
+            const timeWithAMPM = formatTimeWithAMPM(taskTime);
+            
+
+            const taskItem = document.createElement('li');
+            taskItem.className = 'task-item';
+
+            const taskContent = document.createElement('div');
+            taskContent.innerHTML = `
+                <span class="priority ${taskPriority}">${taskPriority.charAt(0).
+                    toUpperCase() + taskPriority.slice(1)}</span>
+                <span>${taskTitle}</span>
+                <span> ${taskDate} ${taskTime}</span>
+            `;
+
+            const buttonsDiv = document.createElement('div');
+            document.addEventListener('DOMContentLoaded', function (){
+                document.getElementById('add-task-button').addEventListener('click', addTask);});
+            
+
+            
+            // Mark as completed button
+            const completeButton = document.createElement('button');
+            completeButton.innerHTML = '<span class="material-icons">check_circle</span>';
+            completeButton.addEventListener('click', () => {
+                taskItem.classList.toggle('completed');
+            });
+
+            // Delete task button
+            const deleteButton = document.createElement('button');
+            deleteButton.innerHTML = '<span class="material-icons">delete</span>';
+            deleteButton.addEventListener('click', () => {
+                taskList.removeChild(taskItem);
+            });
+
+            buttonsDiv.appendChild(completeButton);
+            buttonsDiv.appendChild(deleteButton);
+
+            taskItem.appendChild(taskContent);
+            taskItem.appendChild(buttonsDiv);
+
+            taskList.appendChild(taskItem);
+
+            // Clear the input fields after adding the task
+            document.getElementById('task-title').value = '';
+            document.getElementById('task-priority').value = 'low';
+            document.getElementById('task-date').value = '';
+            document.getElementById('task-time').value = '';
+        }
+        function formatTimeWithAMPM(time) {
+    let [hours, minutes] = time.split(':');
+    let period = 'AM';
+
+    if (hours >= 12) {
+        period = 'PM';
+    }
+
+    if (hours > 12) {
+        hours = hours - 12;
+    }
+
+    if (hours === '00') {
+        hours = 12; // Handle midnight (00:00)
+    }
+
+    return `${hours}:${minutes} ${period}`;
+}
+    </script>
+</body>
+</html>
