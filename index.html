@@ -161,22 +161,7 @@
         .task-input input:-ms-input-placeholder, .task-input select:-ms-input-placeholder {
          color: #ccc;
         }
-        .task-input input[type="date"] {
-  background-image: url('calendar-icon.png');
-  background-size: 20px 20px;
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  padding-left: 30px;
-}
-
-.task-input input[type="time"] {
-  background-image: url('clock-icon.png');
-  background-size: 20px 20px;
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  padding-left: 30px;
-}
-
+        
         .task-input button {
             background-color: #6A11CB;
             color: white;
@@ -191,6 +176,33 @@
         .task-input button:hover {
             background-color: #2575FC;
         }
+        .task-input input[type="date"] {
+  background-image: none;
+  padding-left: 30px;
+}
+
+.task-input input[type="date"]:before {
+  content: "\e916";
+  font-family: 'Material Icons';
+  font-size: 20px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.task-input input[type="time"] {
+  background-image: none;
+  padding-left: 30px;
+}
+
+.task-input input[type="time"]:before {
+  content: "\e878";
+  font-family: 'Material Icons';
+  font-size: 20px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
 
         .task-list {
             list-style: none;
