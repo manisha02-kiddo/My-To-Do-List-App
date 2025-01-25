@@ -267,6 +267,16 @@
             display: block;
             border-radius: 10px;
         } 
+        .input-icon {
+            position: relative;
+            padding-left: 30px;
+        }
+
+       .input-icon span {
+             position: absolute;
+             left: 10px;
+              top: 10px;
+       }
         @media (max-width: 412px) {
   .task-input {
     flex-direction: column;
@@ -315,11 +325,16 @@
                 <option value="low">Low Priority</option>
                 <option value="medium">Medium Priority</option>
                 <option value="high">High Priority</option>
+            </select>
+                <div class="input-icon">
                 <input id="task-date" type="date" placeholder="Date" required>
                 <span>&#128197;</span>
+                </div>
+                <div class="input-icon">
                 <input id="task-time" type="time"placeholder="Time" required>
                 <span>&#128336;</span>
-            </select>
+                </div>
+            
             <button id="add-task-button" onclick="addTask()">
                 <span class="material-icons">add</span>
             </button>
