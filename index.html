@@ -254,7 +254,15 @@
             margin: 20px auto;
             display: block;
             border-radius: 10px;
-        }
+        } @media only screen and (max-width: 768px) {
+  .task-input {
+    flex-direction: column;
+  }
+  .task-input input, .task-input select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
         
         
     </style>
