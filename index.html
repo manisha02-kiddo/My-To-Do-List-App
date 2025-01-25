@@ -304,7 +304,7 @@
         </div>
         <button class="get-started-btn" onclick="startApp()">
             <i class="material-icons">play_arrow</i>Get Started</button>
-        <p class="developer-text">Developed by M Sai Manisha</p>
+        <p class="developer-text" style="color:#fff;">Developed by M Sai Manisha</p>
     </div>
 
     <div class="container" id="app-container" style="display: none;">
@@ -315,8 +315,10 @@
                 <option value="low">Low Priority</option>
                 <option value="medium">Medium Priority</option>
                 <option value="high">High Priority</option>
-                <input id="task-date" type="date" required>
-                <input id="task-time" type="time" required>
+                <input id="task-date" type="date" placeholder="Date" required>
+                <span>&#128197;</span>
+                <input id="task-time" type="time"placeholder="Time" required>
+                <span>&#128336;</span>
             </select>
             <button id="add-task-button" onclick="addTask()">
                 <span class="material-icons">add</span>
