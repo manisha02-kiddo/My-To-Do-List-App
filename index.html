@@ -20,7 +20,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .welcome-screen.developer-text {
+        .welcome-screen.{
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -60,12 +60,12 @@
             margin-bottom: 20px;
         }
 
-        .name-input {
+        .welcome-screen.name-input {
             margin-bottom: 20px;
         }
         
 
-        .name-input input {
+        welcome-screen.name-input input {
             padding: 10px;
             font-size: 16px;
             border: none;
@@ -74,7 +74,7 @@
             text-align: center;
         }
 
-        .get-started-btn {
+         welcome-screen.get-started-btn {
             background: linear-gradient(45deg, #FF7E5F, #FEB47B);
             border: none;
             padding: 15px 30px;
@@ -86,11 +86,11 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             animation: pulse 2s infinite;
         }
-        .get-started-btn i {
+        welcome-screen.get-started-btn i {
             margin-right: 10px;
         }    
 
-        .get-started-btn:hover {
+        welcome-screen.get-started-btn:hover {
             transform: scale(1.1);
             background-color: #FF7E5F;
             color: white;
@@ -105,6 +105,12 @@
             100% {
                 transform: scale(1);
             }
+}
+        .welcome-screen .developer-text {
+  font-size: 14px;
+  color: #666;
+  margin-top: 10px;
+  text-align: center;
 }
 
         .container {
